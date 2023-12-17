@@ -14,7 +14,7 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -24,8 +24,7 @@ class _SignInPageState extends State<SignInPage> {
       idToken: googleAuth?.idToken,
     );
     logger.info('サインインできた');
-    const TimeLineRoute().go(context);
-    return await _auth.signInWithCredential(credential);
+    return await auth.signInWithCredential(credential);
   }
 
   @override
@@ -47,6 +46,7 @@ class _SignInPageState extends State<SignInPage> {
               onPressed: () async {
                 try {
                   final userCredential = await signInWithGoogle();
+                  const TimeLineRoute().go(context);
                 } on FirebaseAuthException catch (e) {
                   logger.info('FirebaseAuthException');
                   logger.info(e.code);

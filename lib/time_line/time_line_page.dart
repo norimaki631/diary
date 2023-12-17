@@ -1,7 +1,11 @@
+import 'package:diary/router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TimeLinePage extends StatelessWidget {
-  const TimeLinePage({Key? key}) : super(key: key);
+  TimeLinePage({Key? key}) : super(key: key);
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +14,19 @@ class TimeLinePage extends StatelessWidget {
         title: const Text('Time Line'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'タイムラインを表示するよ',
+            ),
+            ElevatedButton(
+              onPressed: () {
+                auth.signOut();
+                const SignInRoute().go(context);
+              },
+              child: const Text('サインアウト'),
             ),
           ],
         ),
