@@ -1,3 +1,4 @@
+import 'package:diary/logger.dart';
 import 'package:diary/router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _SignInPageState extends State<SignInPage> {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-    print('サインインできた');
+    logger.info('サインインできた');
     const TimeLineRoute().go(context);
     return await _auth.signInWithCredential(credential);
   }
@@ -47,11 +48,11 @@ class _SignInPageState extends State<SignInPage> {
                 try {
                   final userCredential = await signInWithGoogle();
                 } on FirebaseAuthException catch (e) {
-                  print('FirebaseAuthException');
-                  print(e.code);
+                  logger.info('FirebaseAuthException');
+                  logger.info(e.code);
                 } on Exception catch (e) {
-                  print('Exception');
-                  print(e.toString());
+                  logger.info('Exception');
+                  logger.info(e.toString());
                 }
               },
             ),
