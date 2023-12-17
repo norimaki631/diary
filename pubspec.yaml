@@ -19,6 +19,8 @@ dependencies:
   riverpod_generator: ^2.3.9
   flutter_riverpod: ^2.4.9
   firebase_auth: ^4.15.3
+  google_sign_in: ^6.1.6
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:

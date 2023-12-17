@@ -1,8 +1,31 @@
 import 'package:diary/router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
+
+  @override
+  State createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    print('サインインできた');
+    const TimeLineRoute().go(context);
+    return await _auth.signInWithCredential(credential);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +40,20 @@ class SignInPage extends StatelessWidget {
           children: <Widget>[
             const Text(
               'サインインするよ',
+            ),
+            SignInButton(
+              Buttons.Google,
+              onPressed: () async {
+                try {
+                  final userCredential = await signInWithGoogle();
+                } on FirebaseAuthException catch (e) {
+                  print('FirebaseAuthException');
+                  print(e.code);
+                } on Exception catch (e) {
+                  print('Exception');
+                  print(e.toString());
+                }
+              },
             ),
             ElevatedButton(
               onPressed: () {
