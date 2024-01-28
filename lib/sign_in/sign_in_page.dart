@@ -18,21 +18,12 @@ class SignInPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'サインインするよ',
-            ),
             SignInButton(
               Buttons.Google,
               onPressed: () async {
                 ref.read(authUserProvider.notifier).signIn();
                 const TimeLineRoute().go(context);
               },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                const SignUpRoute().go(context);
-              },
-              child: const Text('Sign Up'),
             ),
           ],
         ),

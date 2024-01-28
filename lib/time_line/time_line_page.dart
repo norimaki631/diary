@@ -18,9 +18,6 @@ class TimeLinePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'タイムラインを表示するよ',
-            ),
             ElevatedButton(
               onPressed: () {
                 auth.signOut();

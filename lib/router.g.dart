@@ -8,7 +8,6 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $signInRoute,
-      $signUpRoute,
       $timeLineRoute,
       $myPageRoute,
     ];
@@ -23,28 +22,6 @@ extension $SignInRouteExtension on SignInRoute {
 
   String get location => GoRouteData.$location(
         '/signIn',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-RouteBase get $signUpRoute => GoRouteData.$route(
-      path: '/signUp',
-      factory: $SignUpRouteExtension._fromState,
-    );
-
-extension $SignUpRouteExtension on SignUpRoute {
-  static SignUpRoute _fromState(GoRouterState state) => const SignUpRoute();
-
-  String get location => GoRouteData.$location(
-        '/signUp',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -105,7 +82,7 @@ extension $MyPageRouteExtension on MyPageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'3c74558d12e1d7a64029c36673608de18f9c81fc';
+String _$routerHash() => r'981170984bf6be8a34e0fdd2fccd923fb07e8d17';
 
 /// See also [router].
 @ProviderFor(router)

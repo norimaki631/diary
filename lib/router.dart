@@ -1,6 +1,5 @@
 import 'package:diary/my_page/my_page.dart';
 import 'package:diary/sign_in/sign_in_page.dart';
-import 'package:diary/sign_in/sign_up_page.dart';
 import 'package:diary/time_line/time_line_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -28,15 +27,6 @@ class SignInRoute extends GoRouteData {
   const SignInRoute();
   @override
   Widget build(BuildContext context, GoRouterState state) => const SignInPage();
-}
-
-@TypedGoRoute<SignUpRoute>(
-  path: '/signUp',
-)
-class SignUpRoute extends GoRouteData {
-  const SignUpRoute();
-  @override
-  Widget build(BuildContext context, GoRouterState state) => const SignUpPage();
 }
 
 @TypedGoRoute<TimeLineRoute>(
