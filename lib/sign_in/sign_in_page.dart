@@ -10,10 +10,6 @@ class SignInPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +18,7 @@ class SignInPage extends ConsumerWidget {
               Buttons.Google,
               onPressed: () async {
                 ref.read(authUserProvider.notifier).signIn();
-                const TimeLineRoute().go(context);
+                const BaseRoute().go(context);
               },
             ),
           ],

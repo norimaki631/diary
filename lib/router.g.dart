@@ -8,6 +8,7 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $signInRoute,
+      $baseRoute,
       $timeLineRoute,
       $myPageRoute,
     ];
@@ -22,6 +23,28 @@ extension $SignInRouteExtension on SignInRoute {
 
   String get location => GoRouteData.$location(
         '/signIn',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $baseRoute => GoRouteData.$route(
+      path: '/Base',
+      factory: $BaseRouteExtension._fromState,
+    );
+
+extension $BaseRouteExtension on BaseRoute {
+  static BaseRoute _fromState(GoRouterState state) => const BaseRoute();
+
+  String get location => GoRouteData.$location(
+        '/Base',
       );
 
   void go(BuildContext context) => context.go(location);
