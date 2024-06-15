@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/router.dart';
+import 'package:diary/time_line/diary_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,8 @@ class _TimeLinePageState extends State<TimeLinePage> {
 
   @override
   Widget build(BuildContext context) {
+    final uid = auth.currentUser!.uid;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Time Line'),
@@ -38,9 +41,9 @@ class _TimeLinePageState extends State<TimeLinePage> {
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirebaseFirestore.instance
                       .collection('users')
-                      .doc(auth.currentUser!.uid)
+                      .doc(uid)
                       .collection('diary')
-                      .orderBy('createdAt')
+                      .orderBy('createdAt', descending: true)
                       .snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
@@ -50,21 +53,23 @@ class _TimeLinePageState extends State<TimeLinePage> {
                       return const Center(child: CircularProgressIndicator());
                     }
                     final list = snapshot.requireData.docs
-                        .map<String>((DocumentSnapshot document) {
+                        .map<List>((DocumentSnapshot document) {
                       final documentData =
                           document.data()! as Map<String, dynamic>;
-                      return documentData['content']! as String;
+                      return [
+                        documentData['createdAt']!.toDate().toString(),
+                        documentData['content']! as String,
+                      ];
                     }).toList();
 
-                    final reverseList = list.reversed.toList();
-
                     return ListView.builder(
-                      itemCount: reverseList.length,
+                      itemCount: list.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Center(
-                          child: Text(
-                            reverseList[index],
-                            style: const TextStyle(fontSize: 20),
+                          child: DiaryCard(
+                            createdAt: list[index][0],
+                            content: list[index][1],
+                            // list[index],
                           ),
                         );
                       },
@@ -89,7 +94,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                     };
                     FirebaseFirestore.instance
                         .collection('users')
-                        .doc(auth.currentUser!.uid)
+                        .doc(uid)
                         .collection('diary')
                         .doc()
                         .set(document);
