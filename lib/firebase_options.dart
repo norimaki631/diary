@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -63,19 +60,32 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDCoh_7RY2BPiHpx_6K6Z7-5d3ZTv4tIM0',
-    appId: '1:743493409156:ios:0934c9dda52bf2db0e25d1',
+    appId: '1:743493409156:ios:f24604b7d671e8db0e25d1',
     messagingSenderId: '743493409156',
     projectId: 'diary-280dc',
     storageBucket: 'diary-280dc.appspot.com',
-    iosBundleId: 'com.tsuruo.diary',
+    iosClientId: '743493409156-t3hkns0gun3via50offb70dbvqqv7t12.apps.googleusercontent.com',
+    iosBundleId: 'com.sami.diary',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDCoh_7RY2BPiHpx_6K6Z7-5d3ZTv4tIM0',
-    appId: '1:743493409156:ios:26884cd8e72cba930e25d1',
+    appId: '1:743493409156:ios:0934c9dda52bf2db0e25d1',
     messagingSenderId: '743493409156',
     projectId: 'diary-280dc',
     storageBucket: 'diary-280dc.appspot.com',
-    iosBundleId: 'com.tsuruo.diary.RunnerTests',
+    iosClientId: '743493409156-vqimd571gig7ushfaord6ao38clkqi83.apps.googleusercontent.com',
+    iosBundleId: 'com.tsuruo.diary',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBWZcRkPe5T2LD2QWu3l0aVe0xlmynbPsQ',
+    appId: '1:743493409156:web:789e2f1f87cccab20e25d1',
+    messagingSenderId: '743493409156',
+    projectId: 'diary-280dc',
+    authDomain: 'diary-280dc.firebaseapp.com',
+    storageBucket: 'diary-280dc.appspot.com',
+    measurementId: 'G-27KN4FSWF1',
+  );
+
 }

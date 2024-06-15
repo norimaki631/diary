@@ -12,7 +12,12 @@
           "package_name": "com.tsuruo.diary"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "743493409156-pj1kf5rn8ijf6dtuc4c8n6p778gqceti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC3_AN901GXgowuTyM8E5SsPIM96JaI0Iw"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743493409156-pj1kf5rn8ijf6dtuc4c8n6p778gqceti.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "743493409156-tdqn3qdob62s6s0g43c75o9nvfj7rr6r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tsuruo.diary.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }
