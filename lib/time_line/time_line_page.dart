@@ -37,6 +37,8 @@ class _TimeLinePageState extends State<TimeLinePage> {
                 alignment: Alignment.topCenter,
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(auth.currentUser!.uid)
                       .collection('diary')
                       .orderBy('createdAt')
                       .snapshots(),
@@ -86,6 +88,8 @@ class _TimeLinePageState extends State<TimeLinePage> {
                       'createdAt': Timestamp.fromDate(DateTime.now()),
                     };
                     FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(auth.currentUser!.uid)
                         .collection('diary')
                         .doc()
                         .set(document);
