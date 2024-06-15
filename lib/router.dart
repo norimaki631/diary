@@ -35,7 +35,8 @@ class SignInRoute extends GoRouteData {
 class TimeLineRoute extends GoRouteData {
   const TimeLineRoute();
   @override
-  Widget build(BuildContext context, GoRouterState state) => TimeLinePage();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const TimeLinePage();
 }
 
 @TypedGoRoute<MyPageRoute>(
