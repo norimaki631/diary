@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DiaryCard extends StatelessWidget {
-  const DiaryCard({
+class UserGroup extends StatelessWidget {
+  const UserGroup({
     super.key,
-    required this.createdAt,
+    required this.user,
     required this.content,
   });
-  final String createdAt;
-  final String content;
+  final String user;
+  final Widget content;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,12 @@ class DiaryCard extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            subtitle: Text(createdAt),
+            title: Text(user),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(content),
+            child: content,
+            // child: Text('自分の投稿'),
           ),
         ],
       ),

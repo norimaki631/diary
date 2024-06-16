@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/components/diary_card.dart';
+import 'package:diary/components/user_group.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -37,23 +38,42 @@ class _TimeLinePageState extends State<TimeLinePage> {
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return const Center(child: Text('データがありません'));
                   }
-                  final list =
-                      snapshot.data!.docs.map((DocumentSnapshot document) {
+
+                  final Map<String, List<Map<String, String>>> userDiaries = {};
+
+                  for (var document in snapshot.data!.docs) {
                     final documentData =
                         document.data()! as Map<String, dynamic>;
-                    return [
-                      documentData['createdAt']!.toDate().toString(),
-                      documentData['content']! as String,
-                    ];
-                  }).toList();
+                    final userId = document.reference.path.split('/')[1];
+
+                    if (!userDiaries.containsKey(userId)) {
+                      userDiaries[userId] = [];
+                    }
+
+                    userDiaries[userId]!.add({
+                      'createdAt':
+                          documentData['createdAt']!.toDate().toString(),
+                      'content': documentData['content']! as String,
+                    });
+                  }
 
                   return ListView.builder(
-                    itemCount: list.length,
+                    itemCount: userDiaries.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Center(
-                        child: DiaryCard(
-                          createdAt: list[index][0],
-                          content: list[index][1],
+                      final userId = userDiaries.keys.elementAt(index);
+                      final diaries = userDiaries[userId]!;
+
+                      return UserGroup(
+                        user: userId,
+                        content: Column(
+                          children: diaries.map((diary) {
+                            return Center(
+                              child: DiaryCard(
+                                createdAt: diary['createdAt']!,
+                                content: diary['content']!,
+                              ),
+                            );
+                          }).toList(),
                         ),
                       );
                     },
