@@ -28,7 +28,7 @@ class DiaryCard extends StatelessWidget {
                 children: [
                   const Text('LLMによる要約'),
                   const SizedBox(width: 10),
-                  Text(DateFormat('yyyy/MM/dd hh:ss')
+                  Text(DateFormat('yyyy/MM/dd hh:mm')
                       .format(createdAt)
                       .toString()),
                 ],
