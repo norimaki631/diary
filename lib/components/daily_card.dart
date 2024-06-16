@@ -1,51 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class DailyCard extends StatelessWidget {
   const DailyCard({
     super.key,
-    required this.createdAt,
+    required this.date,
     required this.content,
   });
-  final DateTime createdAt;
-  final String content;
+  final String date;
+  final Widget content;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(10),
+      height: 300,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: Colors.grey.shade300),
-        ),
+        border: Border.all(color: Colors.grey.shade300),
       ),
-      height: 100,
       child: ListView(
         children: [
-          Container(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 10,
-              bottom: 5,
-            ),
-            child: Row(
-              children: [
-                const Text('LLMによる要約'),
-                const SizedBox(width: 10),
-                Text(DateFormat('hh:mm').format(createdAt).toString()),
-              ],
-            ),
+          Row(
+            children: [
+              Text(
+                date,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'LLMによる大要約',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              )
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 5,
-              bottom: 10,
-            ),
-            alignment: Alignment.centerLeft,
-            child: Text(content),
-          ),
+          content,
         ],
       ),
     );

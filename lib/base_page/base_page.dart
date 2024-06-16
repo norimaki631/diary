@@ -16,8 +16,13 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: display[selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
+      body: display[selectedIndex],
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Color(0xFFe9e6d7),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'タイムライン'),
             BottomNavigationBarItem(icon: Icon(Icons.people), label: 'マイページ'),
@@ -28,6 +33,8 @@ class _BasePageState extends State<BasePage> {
             selectedIndex = index;
             setState(() {});
           },
-        ));
+        ),
+      ),
+    );
   }
 }

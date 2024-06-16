@@ -58,7 +58,11 @@ class _MyPageState extends State<MyPage> {
                 return ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Center(
+                    return Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 8,
+                      ),
                       child: DiaryCard(
                         createdAt: list[index][0],
                         content: list[index][1],
