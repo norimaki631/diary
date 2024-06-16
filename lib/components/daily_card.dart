@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DiaryCard extends StatelessWidget {
-  const DiaryCard({
+class DailyCard extends StatelessWidget {
+  const DailyCard({
     super.key,
     required this.createdAt,
     required this.content,
@@ -26,11 +26,9 @@ class DiaryCard extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Text('LLMによる要約'),
+                  const Text('LLMによる大要約（？）'),
                   const SizedBox(width: 10),
-                  Text(DateFormat('yyyy/MM/dd hh:ss')
-                      .format(createdAt)
-                      .toString()),
+                  Text(DateFormat('yyyy/MM/dd').format(createdAt).toString()),
                 ],
               ),
             ),

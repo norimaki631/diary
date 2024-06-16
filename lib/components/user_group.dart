@@ -11,19 +11,16 @@ class UserGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          ListTile(
-            title: Text(user),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: content,
-            // child: Text('自分の投稿'),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        ListTile(
+          title: Text(user),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: content,
+        ),
+      ],
     );
   }
 }

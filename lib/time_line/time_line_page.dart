@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diary/components/diary_card.dart';
+import 'package:diary/components/daily_card.dart';
 import 'package:diary/components/user_group.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                     return const Center(child: Text('データがありません'));
                   }
 
-                  final Map<String, List<Map<String, String>>> userDiaries = {};
+                  final Map<String, List<dynamic>> userDiaries = {};
 
                   for (var document in snapshot.data!.docs) {
                     final documentData =
@@ -51,8 +51,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                     }
 
                     userDiaries[userId]!.add({
-                      'createdAt':
-                          documentData['createdAt']!.toDate().toString(),
+                      'createdAt': documentData['createdAt']!.toDate(),
                       'content': documentData['content']! as String,
                     });
                   }
@@ -68,7 +67,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                         content: Column(
                           children: diaries.map((diary) {
                             return Center(
-                              child: DiaryCard(
+                              child: DailyCard(
                                 createdAt: diary['createdAt']!,
                                 content: diary['content']!,
                               ),

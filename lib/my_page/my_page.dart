@@ -50,7 +50,7 @@ class _MyPageState extends State<MyPage> {
                     .map<List>((DocumentSnapshot document) {
                   final documentData = document.data()! as Map<String, dynamic>;
                   return [
-                    documentData['createdAt']!.toDate().toString(),
+                    documentData['createdAt']!.toDate(),
                     documentData['content']! as String,
                   ];
                 }).toList();
