@@ -1,4 +1,4 @@
-import 'package:diary/base_page.dart';
+import 'package:diary/base_page/base_page.dart';
 import 'package:diary/my_page/my_page.dart';
 import 'package:diary/sign_in/sign_in_page.dart';
 import 'package:diary/time_line/time_line_page.dart';

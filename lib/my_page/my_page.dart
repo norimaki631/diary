@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diary/components/diary_card.dart';
 import 'package:diary/router.dart';
-import 'package:diary/time_line/diary_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
