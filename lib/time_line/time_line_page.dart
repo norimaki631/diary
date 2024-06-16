@@ -93,7 +93,6 @@ class _TimeLinePageState extends State<TimeLinePage> {
                             },
                           ),
                           UserGroup(
-                            user: userId,
                             content: IndexedStack(
                               index: _selectedIndexes[userId],
                               children: dates.map((date) {

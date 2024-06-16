@@ -17,24 +17,26 @@ class DailyCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
       ),
-      child: ListView(
-        children: [
-          Row(
-            children: [
-              Text(
-                date,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(width: 10),
-              const Text(
-                'LLMによる大要約',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          content,
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  date,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  'LLMによる大要約',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            content,
+          ],
+        ),
       ),
     );
   }

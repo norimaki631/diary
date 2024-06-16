@@ -19,34 +19,36 @@ class DiaryCard extends StatelessWidget {
         ),
       ),
       height: 100,
-      child: ListView(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 10,
-              bottom: 5,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 5,
+              ),
+              child: Row(
+                children: [
+                  const Text('LLMによる要約'),
+                  const SizedBox(width: 10),
+                  Text(DateFormat('hh:mm').format(createdAt).toString()),
+                ],
+              ),
             ),
-            child: Row(
-              children: [
-                const Text('LLMによる要約'),
-                const SizedBox(width: 10),
-                Text(DateFormat('hh:mm').format(createdAt).toString()),
-              ],
+            Container(
+              padding: const EdgeInsets.only(
+                left: 10,
+                right: 10,
+                top: 5,
+                bottom: 10,
+              ),
+              alignment: Alignment.centerLeft,
+              child: Text(content),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 5,
-              bottom: 10,
-            ),
-            alignment: Alignment.centerLeft,
-            child: Text(content),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
