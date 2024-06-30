@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class DiaryCard extends StatelessWidget {
   const DiaryCard({
     super.key,
-    required this.createdAt,
     required this.content,
+    required this.dateWidget,
   });
-  final DateTime createdAt;
   final String content;
+  final Widget dateWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class DiaryCard extends StatelessWidget {
                 children: [
                   const Text('LLMによる要約'),
                   const SizedBox(width: 10),
-                  Text(DateFormat('hh:mm').format(createdAt).toString()),
+                  dateWidget,
                 ],
               ),
             ),

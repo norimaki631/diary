@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diary/components/date_full.dart';
 import 'package:diary/components/diary_card.dart';
 import 'package:diary/router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,8 +65,8 @@ class _MyPageState extends State<MyPage> {
                         horizontal: 8,
                       ),
                       child: DiaryCard(
-                        createdAt: list[index][0],
                         content: list[index][1],
+                        dateWidget: DateFull(createdAt: list[index][0]),
                       ),
                     );
                   },

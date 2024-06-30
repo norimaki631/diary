@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/components/daily_card.dart';
+import 'package:diary/components/date_partial.dart';
 import 'package:diary/components/diary_card.dart';
 import 'package:diary/components/user_group.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -102,8 +103,9 @@ class _TimeLinePageState extends State<TimeLinePage> {
                                   content: Column(
                                     children: diaries.map((diary) {
                                       return DiaryCard(
-                                        createdAt: diary['createdAt']!,
                                         content: diary['content']!,
+                                        dateWidget: DatePartial(
+                                            createdAt: diary['createdAt']!),
                                       );
                                     }).toList(),
                                   ),
