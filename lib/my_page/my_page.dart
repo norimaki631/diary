@@ -75,39 +75,13 @@ class _MyPageState extends State<MyPage> {
             ),
           ),
         ),
-        Row(
-          children: [
-            Expanded(
-              child: TextField(
-                controller: _controller,
-                autofocus: true,
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final document = <String, dynamic>{
-                  'content': _controller.text,
-                  'createdAt': Timestamp.fromDate(DateTime.now()),
-                };
-                FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(uid)
-                    .collection('diary')
-                    .doc()
-                    .set(document);
-                setState(_controller.clear);
-              },
-              child: const Text('送信'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                auth.signOut();
-                const SignInRoute().go(context);
-              },
-              child: const Text('サインアウト'),
-            ),
-          ],
-        )
+        ElevatedButton(
+          onPressed: () {
+            auth.signOut();
+            const SignInRoute().go(context);
+          },
+          child: const Text('サインアウト'),
+        ),
       ],
     );
   }
