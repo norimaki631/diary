@@ -38,6 +38,12 @@ extension $SignInRouteExtension on SignInRoute {
 RouteBase get $baseRoute => GoRouteData.$route(
       path: '/Base',
       factory: $BaseRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'AddPage',
+          factory: $AddPageRouteExtension._fromState,
+        ),
+      ],
     );
 
 extension $BaseRouteExtension on BaseRoute {
@@ -45,6 +51,23 @@ extension $BaseRouteExtension on BaseRoute {
 
   String get location => GoRouteData.$location(
         '/Base',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AddPageRouteExtension on AddPageRoute {
+  static AddPageRoute _fromState(GoRouterState state) => const AddPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/Base/AddPage',
       );
 
   void go(BuildContext context) => context.go(location);

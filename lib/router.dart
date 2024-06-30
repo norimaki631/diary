@@ -1,3 +1,4 @@
+import 'package:diary/add_page/add_page.dart';
 import 'package:diary/base_page/base_page.dart';
 import 'package:diary/my_page/my_page.dart';
 import 'package:diary/sign_in/sign_in_page.dart';
@@ -32,6 +33,7 @@ class SignInRoute extends GoRouteData {
 
 @TypedGoRoute<BaseRoute>(
   path: '/Base',
+  routes: [TypedGoRoute<AddPageRoute>(path: 'AddPage')],
 )
 class BaseRoute extends GoRouteData {
   const BaseRoute();
@@ -56,4 +58,10 @@ class MyPageRoute extends GoRouteData {
   const MyPageRoute();
   @override
   Widget build(BuildContext context, GoRouterState state) => const MyPage();
+}
+
+class AddPageRoute extends GoRouteData {
+  const AddPageRoute();
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const AddPage();
 }

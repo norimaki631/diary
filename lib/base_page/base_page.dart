@@ -1,4 +1,5 @@
 import 'package:diary/my_page/my_page.dart';
+import 'package:diary/router.dart';
 import 'package:diary/time_line/time_line_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,12 @@ class _BasePageState extends State<BasePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: display[selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          const AddPageRoute().go(context);
+        },
+        child: const Icon(Icons.add),
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Color(0xFFe9e6d7),
